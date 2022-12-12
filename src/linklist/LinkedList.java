@@ -7,11 +7,11 @@ package linklist;
  * @author garvitkhandelwal
  * @since 11-Dec-2022
  */
-public class Linklist<T> {
+public class LinkedList<T> {
 
 	Node head;
 
-	public Linklist() {
+	public LinkedList() {
 		head = null;
 	}
 
@@ -32,8 +32,13 @@ public class Linklist<T> {
 
 	}
 
+	/**
+	 * Add element at last position
+	 * 
+	 * @param obj
+	 */
 	private void addLast(T obj) {
-		
+
 		Node node = new Node(obj);
 		Node current = head;
 		if (current == null) {
@@ -45,38 +50,51 @@ public class Linklist<T> {
 		}
 		current.next = node;
 	}
+
 	
+	/**
+	 * Add element at last position
+	 * 
+	 * @param obj
+	 */
+	private void addFirst(T obj) {
+
+		Node node = new Node(obj);
+		node.next = head;
+		head = node;
+	}
+
+	/**
+	 * Delete an element in linkedlist
+	 * @param obj
+	 */
 	private void delete(T obj) {
-		
-		
-		
+
 		Node current = head;
 		if (current == null) {
 			System.out.println("Not found");
 			return;
 		}
-		
-		if(current.data.equals(obj))
-		{
+
+		if (current.data.equals(obj)) {
 			head = current.next;
-			return ;
+			return;
 		}
-		
+
 		Node previous = current;
 		current = current.next;
-		
+
 		while (current.next != null) {
-			
-			if(current.data.equals(obj))
-			{
-				previous.next = current.next ;
-				current =  null;
-				return ;
+
+			if (current.data.equals(obj)) {
+				previous.next = current.next;
+				current = null;
+				return;
 			}
 		}
-		
+
 		System.out.println("Not found");
-		
+
 	}
 
 	private void print() {
@@ -97,13 +115,13 @@ public class Linklist<T> {
 	 */
 	public static void main(String[] args) {
 
-		Linklist<String> linklist = new Linklist<String>();
+		LinkedList<String> linklist = new LinkedList<String>();
 		linklist.addLast("Name");
 		linklist.addLast("Name1");
 		linklist.addLast("Name2");
 		linklist.addLast("Name3");
 		linklist.print();
-		
+
 		linklist.delete("Name1");
 		linklist.print();
 
